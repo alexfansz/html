@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Home</title>
+    <link>http://www.basicgo.net/post/</link>
+    <description>Recent content in Posts on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 09 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://www.basicgo.net/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Markdown 语法手册</title>
+      <link>http://www.basicgo.net/p/markdown-%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/</link>
+      <pubDate>Thu, 09 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.basicgo.net/p/markdown-%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/</guid>
+      <description>&lt;p&gt;Markdown的轻量化、易读易写特性，并且对于图片，图表、数学式都有支持，Hugo支持使用Markdown来撰写文档。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Math Typesetting</title>
+      <link>http://www.basicgo.net/p/math-typesetting/</link>
+      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.basicgo.net/p/math-typesetting/</guid>
+      <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
