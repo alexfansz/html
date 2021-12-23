@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DLNA on Home</title>
+    <link>http://www.basicgo.net/tags/dlna/</link>
+    <description>Recent content in DLNA on Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 23 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://www.basicgo.net/tags/dlna/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>手机投屏到安卓电视</title>
+      <link>http://www.basicgo.net/p/screengo-tv/</link>
+      <pubDate>Thu, 23 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.basicgo.net/p/screengo-tv/</guid>
+      <description>把手机屏幕投屏到安卓电视上去 家里的电视基本都是安卓智能电视了，性能逐渐强大，可以自己安装一些android app来满足我们的一些生活娱乐需求</description>
+    </item>
+    
+  </channel>
+</rss>
