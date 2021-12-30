@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='使用Hugo搭建的个人blogs'><title>About</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Windows、Linux/Android等其他非macOS、iOS设备自动发现'><title>设计手机投屏安卓app(3)</title>
 
-<link rel='canonical' href='http://www.basicgo.net/about/'>
+<link rel='canonical' href='http://www.basicgo.net/p/screengo-3/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='About'>
-<meta property='og:description' content='使用Hugo搭建的个人blogs'>
-<meta property='og:url' content='http://www.basicgo.net/about/'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='设计手机投屏安卓app(3)'>
+<meta property='og:description' content='Windows、Linux/Android等其他非macOS、iOS设备自动发现'>
+<meta property='og:url' content='http://www.basicgo.net/p/screengo-3/'>
 <meta property='og:site_name' content='Home'>
-<meta property='og:type' content='article'><meta property='article:section' content='Page' /><meta property='article:published_time' content='2021-12-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-12-07T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="About">
-<meta name="twitter:description" content="使用Hugo搭建的个人blogs">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='安卓app' /><meta property='article:published_time' content='2021-12-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-12-30T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="设计手机投屏安卓app(3)">
+<meta name="twitter:description" content="Windows、Linux/Android等其他非macOS、iOS设备自动发现">
     </head>
     <body class="
     article-page has-toc
@@ -65,12 +65,12 @@
     
 
     <h2 class="article-title">
-        <a href="/about/">About</a>
+        <a href="/p/screengo-3/">设计手机投屏安卓app(3)</a>
     </h2>
 
     
     <h3 class="article-subtitle">
-        使用Hugo搭建的个人blogs
+        Windows、Linux/Android等其他非macOS、iOS设备自动发现
     </h3>
     
 
@@ -87,7 +87,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Dec 07, 2021</time>
+                <time class="article-time--published">Dec 30, 2021</time>
             </div>
         
 
@@ -112,19 +112,107 @@
 </header>
 
     <section class="article-content">
-    <p>邮箱: <a class="link" href="mailto:alex_fan_sz@hotmail.com" >alex_fan_sz@hotmail.com</a></p>
-<p>微信: 18718770267</p>
-<h2 id="windows投屏软件httpwwwbasicgonetpscreengo-winandroid投屏软件开发设计httpwwwbasicgonetpscreengo-tv下载安卓app"><a class="link" href="http://www.basicgo.net/p/screengo-win/"  target="_blank" rel="noopener"
-    >Windows投屏软件</a>、<a class="link" href="http://www.basicgo.net/p/screengo-tv/#%e4%b8%8b%e8%bd%bd%e5%ae%89%e5%8d%93app"  target="_blank" rel="noopener"
-    >Android投屏软件开发设计</a></h2>
-<h2 id="我的githubhttpsgithubcomalexfanszairplay_dlna_googlecast"><a class="link" href="https://github.com/alexfansz/airplay_dlna_googlecast"  target="_blank" rel="noopener"
-    >我的Github</a></h2>
-<h2 id="硬件开发设计">[硬件开发设计]</h2>
+    <p><a class="link" href="http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.0.pdf"  target="_blank" rel="noopener"
+    >UPnP</a>， Universal Plug and Play，通用即插即用。</p>
+<h1 id="协议">协议</h1>
+<ul>
+<li>SSDP: Simple Service Discovery Protocol, for discovering UPnP devices on the local network.</li>
+<li>SCPD: Service Control Point Definition, for defining the actions offered by the various services.</li>
+<li>SOAP: Simple Object Access Protocol, for actually calling actions.</li>
+</ul>
+<h2 id="ssdp-discovery">SSDP Discovery</h2>
+<p><a class="link" href="http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.0.pdf"  target="_blank" rel="noopener"
+    >UPnP官方文档</a>第10页开始描述Discovery,细节非常清晰，仔细阅读即可，取它一张图概述
+<figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 93; 
+			flex-basis: 223px"
+	>
+	<a href="/p/screengo-3/ssdp.png" data-size="516x553">
+		<img src="/p/screengo-3/ssdp.png"
+			width="516"
+			height="553"
+			srcset="/p/screengo-3/ssdp_hu27ff98b8d9b56b0385ce362c90e7f5da_13201_480x0_resize_box_3.png 480w, /p/screengo-3/ssdp_hu27ff98b8d9b56b0385ce362c90e7f5da_13201_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="Discovery">
+	</a>
+	
+	<figcaption>Discovery</figcaption>
+	
+</figure></p>
+<h3 id="discoverysearchrequest-with-m-search">Discovery:Search:Request with M-SEARCH</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">bufferlength</span> <span class="o">=</span> <span class="n">snprintf</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="mi">1024</span><span class="p">,</span><span class="s">&#34;M-SEARCH * HTTP/1.1</span><span class="se">\r\n</span><span class="s">MX: 3</span><span class="se">\r\n</span><span class="s">ST: %s</span><span class="se">\r\n</span><span class="s">HOST: 239.255.255.250:1900</span><span class="se">\r\n</span><span class="s">MAN: </span><span class="se">\&#34;</span><span class="s">ssdp:discover</span><span class="se">\&#34;\r\n\r\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">ST</span><span class="p">);</span>
+
+
+<span class="kt">int</span> <span class="n">sockfd</span><span class="o">=</span><span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span><span class="n">SOCK_DGRAM</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+<span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="n">addr</span><span class="p">;</span>
+<span class="n">addr</span><span class="p">.</span><span class="n">sin_family</span> <span class="o">=</span><span class="n">AF_INET</span><span class="p">;</span>
+<span class="n">addr</span><span class="p">.</span><span class="n">sin_port</span> <span class="o">=</span><span class="n">htons</span><span class="p">(</span><span class="mi">1900</span><span class="p">);</span>
+<span class="n">addr</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="n">inet_addr</span><span class="p">(</span><span class="s">&#34;239.255.255.250&#34;</span><span class="p">);</span>
+
+<span class="n">sendto</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span><span class="n">buffer</span><span class="p">,</span><span class="n">bufferlength</span><span class="p">,</span><span class="mi">0</span><span class="p">,(</span><span class="k">struct</span> <span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">addr</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">addr</span><span class="p">));</span>
+</code></pre></div><table>
+<thead>
+<tr>
+<th>ST</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ssdp:all</td>
+<td>Search for all devices and services.</td>
+</tr>
+<tr>
+<td>upnp:rootdevice</td>
+<td>Search for root devices only.</td>
+</tr>
+<tr>
+<td>uuid:device-UUID</td>
+<td>Search for a particular device. Device UUID specified by UPnP vendor.</td>
+</tr>
+<tr>
+<td>urn:schemas-upnp-org:device:deviceType:v</td>
+<td>Search for any device of this type. Device type and version defined by UPnP Forum working committee.</td>
+</tr>
+<tr>
+<td>urn:schemas-upnp-org:service:serviceType:v</td>
+<td>Search for any service of this type. Service type and version defined by UPnP Forum working committee.</td>
+</tr>
+<tr>
+<td>urn:domain-name:device:deviceType:v</td>
+<td>Search for any device of this type. Domain name, device type and version defined by UPnP vendor. Period characters in the domain name must be replaced with hyphens in accordance with RFC 2141.</td>
+</tr>
+<tr>
+<td>urn:domain-name:service:serviceType:v</td>
+<td>Search for any service of this type. Domain name, service type and version defined by UPnP vendor. Period characters in the domain name must be replaced with hyphens in accordance with RFC 2141.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="discoverysearchresponse">Discovery:Search:Response</h3>
+<p>这是我自己调试RK3036开发板时M-SEARCH收到的响应输出:</p>
+<pre tabindex="0"><code class="language-debug" data-lang="debug">D/lollipop_mix(  152): LOCATION: http://192.168.2.5:62008/
+D/lollipop_mix(  152): DATE: Thu, 30 Dec 2021 09:06:30 GMT
+D/lollipop_mix(  152): EXT:
+D/lollipop_mix(  152): SERVER: ANDROID, UPnP/1.0, Intel MicroStack/1.0.2718
+D/lollipop_mix(  152): USN: uuid:9A:1A:CE:9E:E3:7B@www.basicgo.net::urn:schemas-upnp-org:service:UsbDisplay:1
+D/lollipop_mix(  152): CACHE-CONTROL: max-age=1800
+D/lollipop_mix(  152): ST: HUAWEI ALP-AL00:7B
+</code></pre>
 </section>
 
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/%E5%AE%89%E5%8D%93app/">安卓app</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">
@@ -136,7 +224,7 @@
 
 
 
-        <span>CC BY-NC-ND</span>
+        <span>Licensed under CC BY-NC-SA 4.0</span>
     </section>
     </footer>
 
@@ -268,9 +356,12 @@
                 <div class="widget--toc">
                     <nav id="TableOfContents">
   <ol>
-    <li><a href="#windows投屏软件httpwwwbasicgonetpscreengo-winandroid投屏软件开发设计httpwwwbasicgonetpscreengo-tv下载安卓app"><a href="http://www.basicgo.net/p/screengo-win/">Windows投屏软件</a>、<a href="http://www.basicgo.net/p/screengo-tv/#%E4%B8%8B%E8%BD%BD%E5%AE%89%E5%8D%93app">Android投屏软件开发设计</a></a></li>
-    <li><a href="#我的githubhttpsgithubcomalexfanszairplay_dlna_googlecast"><a href="https://github.com/alexfansz/airplay_dlna_googlecast">我的Github</a></a></li>
-    <li><a href="#硬件开发设计">[硬件开发设计]</a></li>
+    <li><a href="#ssdp-discovery">SSDP Discovery</a>
+      <ol>
+        <li><a href="#discoverysearchrequest-with-m-search">Discovery:Search:Request with M-SEARCH</a></li>
+        <li><a href="#discoverysearchresponse">Discovery:Search:Response</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
                 </div>
