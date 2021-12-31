@@ -6,7 +6,17 @@
     <description>Recent content in 安卓app on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 30 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://www.basicgo.net/tags/%E5%AE%89%E5%8D%93app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 31 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://www.basicgo.net/tags/%E5%AE%89%E5%8D%93app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RK3036 开发板</title>
+      <link>http://www.basicgo.net/p/rk3036-rk_dlna/</link>
+      <pubDate>Fri, 31 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.basicgo.net/p/rk3036-rk_dlna/</guid>
+      <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.rock-chips.com/a/en/products/RK30_Series/2014/0924/521.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;RK3036&lt;/a&gt;发布的SDK中，内置有对dlna的支持，使用SDK提供的API接口实现设备查询。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>设计手机投屏安卓app(3)</title>
       <link>http://www.basicgo.net/p/screengo-3/</link>

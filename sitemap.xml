@@ -2,17 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://www.basicgo.net/tags/dlna/</loc>
+    <lastmod>2021-12-31T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://www.basicgo.net/</loc>
-    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.basicgo.net/post/</loc>
-    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.basicgo.net/p/rk3036-rk_dlna/</loc>
+    <lastmod>2021-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.basicgo.net/tags/</loc>
-    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.basicgo.net/tags/upnp/</loc>
+    <lastmod>2021-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.basicgo.net/tags/%E5%AE%89%E5%8D%93app/</loc>
-    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.basicgo.net/p/screengo-3/</loc>
     <lastmod>2021-12-30T00:00:00+00:00</lastmod>
@@ -31,9 +40,6 @@
   </url><url>
     <loc>http://www.basicgo.net/p/screengo-win/</loc>
     <lastmod>2021-12-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://www.basicgo.net/tags/dlna/</loc>
-    <lastmod>2021-12-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.basicgo.net/p/screengo-tv/</loc>
     <lastmod>2021-12-23T00:00:00+00:00</lastmod>
