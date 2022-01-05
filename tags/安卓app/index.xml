@@ -6,7 +6,18 @@
     <description>Recent content in 安卓app on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 31 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://www.basicgo.net/tags/%E5%AE%89%E5%8D%93app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 05 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://www.basicgo.net/tags/%E5%AE%89%E5%8D%93app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>设计手机投屏安卓app(4)</title>
+      <link>http://www.basicgo.net/p/screengo-4/</link>
+      <pubDate>Wed, 05 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.basicgo.net/p/screengo-4/</guid>
+      <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://developer.android.com/reference/android/media/MediaCodec&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;MediaCodec&lt;/a&gt;， MediaCodec class can be used to access low-level media codecs, i.e. encoder/decoder components. It is part of the Android low-level multimedia support infrastructure (normally used together with MediaExtractor, MediaSync, MediaMuxer, MediaCrypto, MediaDrm, Image, Surface, and AudioTrack.)&lt;/p&gt;
+&lt;p&gt;投屏需要录屏并编码，不用保存视频文件到磁盘，MediaCodec非常合适作为我们的数据中转站，通过配置h264 encoder,一方面它从Surface中得到yuv raw数据并编码，一方面我们获取h264的视频编码流向下送到传输层就可以了。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>RK3036 开发板</title>
       <link>http://www.basicgo.net/p/rk3036-rk_dlna/</link>
