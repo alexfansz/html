@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 12 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://www.basicgo.net/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://www.basicgo.net/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>U2-x10会议投屏产品使用问答(1)</title>
+      <link>http://www.basicgo.net/p/u2-x10_help/</link>
+      <pubDate>Mon, 17 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.basicgo.net/p/u2-x10_help/</guid>
+      <description>如何进入设置界面 按遥控器设置键 手机wifi连接同屏器热点,在手机浏览器输入192.168.59.254 如何修改同屏器菜单语言 进入设置菜单Sy</description>
+    </item>
+    
     <item>
       <title>设计手机投屏安卓app(5)</title>
       <link>http://www.basicgo.net/p/screengo-5/</link>
@@ -66,7 +75,7 @@
     </item>
     
     <item>
-      <title>手机投屏到Windows电脑</title>
+      <title>手机如何投屏到Windows电脑</title>
       <link>http://www.basicgo.net/p/screengo-win/</link>
       <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
       
@@ -75,7 +84,7 @@
     </item>
     
     <item>
-      <title>手机投屏到安卓电视</title>
+      <title>手机如何投屏到安卓电视</title>
       <link>http://www.basicgo.net/p/screengo-tv/</link>
       <pubDate>Thu, 23 Dec 2021 00:00:00 +0000</pubDate>
       
