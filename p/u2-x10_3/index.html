@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='RTP 实时音视频传输协议'><title>会议投屏(4)</title>
+
+<link rel='canonical' href='http://www.basicgo.net/p/u2-x10_3/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='会议投屏(4)'>
+<meta property='og:description' content='RTP 实时音视频传输协议'>
+<meta property='og:url' content='http://www.basicgo.net/p/u2-x10_3/'>
+<meta property='og:site_name' content='Home'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='手机投屏' /><meta property='article:tag' content='会议投屏' /><meta property='article:tag' content='RTP' /><meta property='article:published_time' content='2022-05-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-05-02T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="会议投屏(4)">
+<meta name="twitter:description" content="RTP 实时音视频传输协议">
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>返回</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/p/u2-x10_3/">会议投屏(4)</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        RTP 实时音视频传输协议
+    </h3>
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 02, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 2 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>两个协议标准定义了RTP H264的传输规范</p>
+<h2 id="rfc3550httpswwwrfc-editororgrfcrfc3550"><a class="link" href="https://www.rfc-editor.org/rfc/rfc3550"  target="_blank" rel="noopener"
+    >RFC3550</a></h2>
+<h2 id="rfc6184httpswwwrfc-editororgrfcrfc6184"><a class="link" href="https://www.rfc-editor.org/rfc/rfc6184"  target="_blank" rel="noopener"
+    >RFC6184</a></h2>
+<h3 id="c实例rfc3550我自己常用jrtblibhttpsgithubcomj0r1jrtplib">c++实例RFC3550我自己常用<a class="link" href="https://github.com/j0r1/JRTPLIB"  target="_blank" rel="noopener"
+    >JRTBLIB</a></h3>
+<h4 id="使用ffmpeghttpsffmpegorg测试验证">使用<a class="link" href="https://ffmpeg.org"  target="_blank" rel="noopener"
+    >ffmpeg</a>测试验证</h4>
+<pre tabindex="0"><code>用ffmpeg 向本机发送rtp流
+Output #0, rtp, to 'rtp://127.0.0.1:30016':
+  Metadata:
+    encoder         : Lavf58.45.100
+    Stream #0:0: Video: h264 (libx264), nv12, 1920x1080, q=-1--1, 30 fps, 90k tbn, 30 tbc
+    Metadata:
+      encoder         : Lavc58.91.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 20000000/0/0 buffer size: 1000000 vbv_delay: N/A
+SDP:
+v=0
+o=- 0 0 IN IP4 127.0.0.1
+s=No Name
+c=IN IP4 127.0.0.1
+t=0 0
+a=tool:libavformat 58.45.100
+m=video 30016 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 packetization-mode=1
+
+frame=   39 fps= 30 q=18.0 Lsize=     578kB time=00:00:01.26 bitrate=3737.0kbits/s dup=12 drop=0 speed=0.982x
+video:572kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 1.025276%
+</code></pre><h4 id="使用jrtplibhttpsgithubcomj0r1jrtplib自带的tests-测试用例rtcpdump验证">使用<a class="link" href="https://github.com/j0r1/JRTPLIB"  target="_blank" rel="noopener"
+    >JRTPLIB</a>自带的tests 测试用例rtcpdump验证</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&#34;rtpsession.h&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;rtpipv4address.h&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;rtpsessionparams.h&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;rtpudpv4transmitter.h&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;rtperrors.h&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;rtcpcompoundpacket.h&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;rtcpsrpacket.h&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;rtcprrpacket.h&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;rtcpbyepacket.h&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;rtprawpacket.h&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">jrtplib</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">checkError</span><span class="p">(</span><span class="kt">int</span> <span class="n">status</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="k">return</span><span class="p">;</span>
+	
+	<span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;An error occured in the RTP component: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Error description: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">RTPGetErrorString</span><span class="p">(</span><span class="n">status</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	
+	<span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">class</span> <span class="nl">MyRTPSession</span> <span class="p">:</span> <span class="n">public</span> <span class="n">RTPSession</span>
+<span class="p">{</span>
+<span class="nl">private</span><span class="p">:</span>
+	<span class="n">FILE</span> <span class="o">*</span><span class="n">pLogFile</span><span class="p">;</span>
+<span class="nl">public</span><span class="p">:</span>
+	<span class="n">MyRTPSession</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">SetChangeIncomingData</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+		
+		<span class="n">pLogFile</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&#34;logfile.dat&#34;</span><span class="p">,</span> <span class="s">&#34;wb&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="o">~</span><span class="n">MyRTPSession</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">pLogFile</span><span class="p">)</span>
+			<span class="n">fclose</span><span class="p">(</span><span class="n">pLogFile</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="nl">protected</span><span class="p">:</span>
+	<span class="kt">void</span> <span class="n">OnValidatedRTPPacket</span><span class="p">(</span><span class="n">RTPSourceData</span> <span class="o">*</span><span class="n">srcdat</span><span class="p">,</span> <span class="n">RTPPacket</span> <span class="o">*</span><span class="n">rtppack</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">isonprobation</span><span class="p">,</span> <span class="kt">bool</span> <span class="o">*</span><span class="n">ispackethandled</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="c1">// Make sure no RTP packets are stored internally, we&#39;d just be wasting memory
+</span><span class="c1"></span>		<span class="n">DeletePacket</span><span class="p">(</span><span class="n">rtppack</span><span class="p">);</span>
+		<span class="o">*</span><span class="n">ispackethandled</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="kt">bool</span> <span class="n">OnChangeIncomingData</span><span class="p">(</span><span class="n">RTPRawPacket</span> <span class="o">*</span><span class="n">pPack</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">pLogFile</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="kt">double</span> <span class="n">t</span> <span class="o">=</span> <span class="n">pPack</span><span class="o">-&gt;</span><span class="n">GetReceiveTime</span><span class="p">().</span><span class="n">GetDouble</span><span class="p">();</span>
+			<span class="kt">bool</span> <span class="n">isRTP</span> <span class="o">=</span> <span class="n">pPack</span><span class="o">-&gt;</span><span class="n">IsRTP</span><span class="p">();</span>
+			<span class="kt">uint32_t</span> <span class="n">dataLength</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">pPack</span><span class="o">-&gt;</span><span class="n">GetDataLength</span><span class="p">();</span>
+
+			<span class="k">if</span> <span class="p">(</span><span class="n">isRTP</span><span class="p">)</span>
+				<span class="n">fwrite</span><span class="p">(</span><span class="s">&#34;RTP &#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">pLogFile</span><span class="p">);</span>
+			<span class="k">else</span>
+				<span class="nf">fwrite</span><span class="p">(</span><span class="s">&#34;RTCP&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">pLogFile</span><span class="p">);</span>
+
+			<span class="n">fwrite</span><span class="p">(</span><span class="o">&amp;</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">double</span><span class="p">),</span> <span class="n">pLogFile</span><span class="p">);</span>
+			<span class="n">fwrite</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dataLength</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">),</span><span class="n">pLogFile</span><span class="p">);</span>
+			<span class="n">fwrite</span><span class="p">(</span><span class="n">pPack</span><span class="o">-&gt;</span><span class="n">GetData</span><span class="p">(),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dataLength</span><span class="p">,</span> <span class="n">pLogFile</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="kt">void</span> <span class="n">OnRTCPCompoundPacket</span><span class="p">(</span><span class="n">RTCPCompoundPacket</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="k">const</span> <span class="n">RTPTime</span> <span class="o">&amp;</span><span class="n">receivetime</span><span class="p">,</span> <span class="k">const</span> <span class="n">RTPAddress</span> <span class="o">*</span><span class="n">senderaddress</span><span class="p">)</span>
+	<span class="p">{</span>	
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%u.%06u RECEIVED</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">receivetime</span><span class="p">.</span><span class="n">GetSeconds</span><span class="p">(),</span><span class="n">receivetime</span><span class="p">.</span><span class="n">GetMicroSeconds</span><span class="p">());</span>
+		
+		<span class="n">DumpCompoundPacket</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="n">p</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="kt">void</span> <span class="n">OnSendRTCPCompoundPacket</span><span class="p">(</span><span class="n">RTCPCompoundPacket</span> <span class="o">*</span><span class="n">p</span><span class="p">)</span>
+	<span class="p">{</span>	
+		<span class="n">RTPTime</span> <span class="n">t</span> <span class="o">=</span> <span class="n">RTPTime</span><span class="o">::</span><span class="n">CurrentTime</span><span class="p">();</span>
+		
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%u.%06u SENDING</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">t</span><span class="p">.</span><span class="n">GetSeconds</span><span class="p">(),</span><span class="n">t</span><span class="p">.</span><span class="n">GetMicroSeconds</span><span class="p">());</span>
+		
+		<span class="n">DumpCompoundPacket</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="n">p</span><span class="p">);</span>
+	<span class="p">}</span>
+	
+	<span class="kt">void</span> <span class="n">DumpCompoundPacket</span><span class="p">(</span><span class="n">FILE</span> <span class="o">*</span><span class="n">f</span><span class="p">,</span> <span class="n">RTCPCompoundPacket</span> <span class="o">*</span><span class="n">p</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">RTCPPacket</span> <span class="o">*</span><span class="n">pack</span><span class="p">;</span>
+
+		<span class="n">p</span><span class="o">-&gt;</span><span class="n">GotoFirstPacket</span><span class="p">();</span>
+		<span class="k">while</span> <span class="p">((</span><span class="n">pack</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">GetNextPacket</span><span class="p">())</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">if</span> <span class="p">(</span><span class="n">pack</span><span class="o">-&gt;</span><span class="n">GetPacketType</span><span class="p">()</span> <span class="o">==</span> <span class="n">RTCPPacket</span><span class="o">::</span><span class="n">SR</span><span class="p">)</span>
+			<span class="p">{</span>
+				<span class="n">RTCPSRPacket</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">RTCPSRPacket</span> <span class="o">*</span><span class="p">)</span><span class="n">pack</span><span class="p">;</span>
+
+				<span class="n">RTPTime</span> <span class="nf">t</span><span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetNTPTimestamp</span><span class="p">());</span>
+				
+				<span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="s">&#34;  SR packet</span><span class="se">\n</span><span class="s">    SSRC %27u</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetSenderSSRC</span><span class="p">());</span>
+				<span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="s">&#34;    NTP timestamp: %10u.%06u</span><span class="se">\n</span><span class="s">    RTP timestamp: %17u</span><span class="se">\n</span><span class="s">    Packets sent: %18u</span><span class="se">\n</span><span class="s">    Octets sent: %19u</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">t</span><span class="p">.</span><span class="n">GetSeconds</span><span class="p">(),</span><span class="n">t</span><span class="p">.</span><span class="n">GetMicroSeconds</span><span class="p">(),</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetRTPTimestamp</span><span class="p">(),</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetSenderPacketCount</span><span class="p">(),</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetSenderOctetCount</span><span class="p">());</span>
+					
+				<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">GetReceptionReportCount</span><span class="p">()</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+					<span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="s">&#34;    RR block %d</span><span class="se">\n</span><span class="s">      SSRC %25u</span><span class="se">\n</span><span class="s">      Fraction lost: %15d</span><span class="se">\n</span><span class="s">      Packets lost: %16d</span><span class="se">\n</span><span class="s">      Ext. high. seq. nr: %10u</span><span class="se">\n</span><span class="s">      Jitter: %22u</span><span class="se">\n</span><span class="s">      LSR: %25u</span><span class="se">\n</span><span class="s">      DLSR: %24u</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+							<span class="n">p</span><span class="o">-&gt;</span><span class="n">GetSSRC</span><span class="p">(</span><span class="n">i</span><span class="p">),(</span><span class="kt">int</span><span class="p">)</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetFractionLost</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetLostPacketCount</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetExtendedHighestSequenceNumber</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetJitter</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetLSR</span><span class="p">(</span><span class="n">i</span><span class="p">),</span>
+							<span class="n">p</span><span class="o">-&gt;</span><span class="n">GetDLSR</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+			<span class="p">}</span>
+			<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">pack</span><span class="o">-&gt;</span><span class="n">GetPacketType</span><span class="p">()</span> <span class="o">==</span> <span class="n">RTCPPacket</span><span class="o">::</span><span class="n">RR</span><span class="p">)</span>
+			<span class="p">{</span>
+				<span class="n">RTCPRRPacket</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">RTCPRRPacket</span> <span class="o">*</span><span class="p">)</span><span class="n">pack</span><span class="p">;</span>
+
+				<span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="s">&#34;  RR packet</span><span class="se">\n</span><span class="s">    SSRC %27u</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetSenderSSRC</span><span class="p">());</span>
+					
+				<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">GetReceptionReportCount</span><span class="p">()</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+					<span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="s">&#34;    RR block %d</span><span class="se">\n</span><span class="s">      SSRC %25u</span><span class="se">\n</span><span class="s">      Fraction lost: %15d</span><span class="se">\n</span><span class="s">      Packets lost: %16d</span><span class="se">\n</span><span class="s">      Ext. high. seq. nr: %10u</span><span class="se">\n</span><span class="s">      Jitter: %22u</span><span class="se">\n</span><span class="s">      LSR: %25u</span><span class="se">\n</span><span class="s">      DLSR: %24u</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+							<span class="n">p</span><span class="o">-&gt;</span><span class="n">GetSSRC</span><span class="p">(</span><span class="n">i</span><span class="p">),(</span><span class="kt">int</span><span class="p">)</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetFractionLost</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetLostPacketCount</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetExtendedHighestSequenceNumber</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetJitter</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetLSR</span><span class="p">(</span><span class="n">i</span><span class="p">),</span>
+							<span class="n">p</span><span class="o">-&gt;</span><span class="n">GetDLSR</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+			<span class="p">}</span>
+			<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">pack</span><span class="o">-&gt;</span><span class="n">GetPacketType</span><span class="p">()</span> <span class="o">==</span> <span class="n">RTCPPacket</span><span class="o">::</span><span class="n">SDES</span><span class="p">)</span>
+			<span class="p">{</span>
+				<span class="n">RTCPSDESPacket</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">RTCPSDESPacket</span> <span class="o">*</span><span class="p">)</span><span class="n">pack</span><span class="p">;</span>
+				<span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+				
+				<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GotoFirstChunk</span><span class="p">())</span>
+					<span class="k">return</span><span class="p">;</span>
+				
+				<span class="k">do</span>
+				<span class="p">{</span>
+					<span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="s">&#34;  SDES Chunk:</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+					<span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="s">&#34;    SSRC: %26u</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetChunkSSRC</span><span class="p">());</span>
+					<span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GotoFirstItem</span><span class="p">())</span>
+					<span class="p">{</span>
+						<span class="k">do</span>
+						<span class="p">{</span>
+							<span class="k">switch</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetItemType</span><span class="p">())</span>
+							<span class="p">{</span>
+							<span class="k">case</span> <span class="n">RTCPSDESPacket</span><span class="o">::</span><span class="nl">None</span><span class="p">:</span>
+								<span class="n">strcpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="s">&#34;None    &#34;</span><span class="p">);</span>
+								<span class="k">break</span><span class="p">;</span>
+							<span class="k">case</span> <span class="n">RTCPSDESPacket</span><span class="o">::</span><span class="nl">CNAME</span><span class="p">:</span>
+								<span class="n">strcpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="s">&#34;CNAME:  &#34;</span><span class="p">);</span>
+								<span class="k">break</span><span class="p">;</span>
+							<span class="k">case</span> <span class="n">RTCPSDESPacket</span><span class="o">::</span><span class="nl">NAME</span><span class="p">:</span>
+								<span class="n">strcpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="s">&#34;NAME:   &#34;</span><span class="p">);</span>
+								<span class="k">break</span><span class="p">;</span>
+							<span class="k">case</span> <span class="n">RTCPSDESPacket</span><span class="o">::</span><span class="nl">EMAIL</span><span class="p">:</span>
+								<span class="n">strcpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="s">&#34;EMAIL:  &#34;</span><span class="p">);</span>
+								<span class="k">break</span><span class="p">;</span>
+							<span class="k">case</span> <span class="n">RTCPSDESPacket</span><span class="o">::</span><span class="nl">PHONE</span><span class="p">:</span>
+								<span class="n">strcpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="s">&#34;PHONE:  &#34;</span><span class="p">);</span>
+								<span class="k">break</span><span class="p">;</span>
+							<span class="k">case</span> <span class="n">RTCPSDESPacket</span><span class="o">::</span><span class="nl">LOC</span><span class="p">:</span>
+								<span class="n">strcpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="s">&#34;LOC:    &#34;</span><span class="p">);</span>
+								<span class="k">break</span><span class="p">;</span>
+							<span class="k">case</span> <span class="n">RTCPSDESPacket</span><span class="o">::</span><span class="nl">TOOL</span><span class="p">:</span>
+								<span class="n">strcpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="s">&#34;TOOL:   &#34;</span><span class="p">);</span>
+								<span class="k">break</span><span class="p">;</span>
+							<span class="k">case</span> <span class="n">RTCPSDESPacket</span><span class="o">::</span><span class="nl">NOTE</span><span class="p">:</span>
+								<span class="n">strcpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="s">&#34;NOTE:   &#34;</span><span class="p">);</span>
+								<span class="k">break</span><span class="p">;</span>
+							<span class="k">case</span> <span class="n">RTCPSDESPacket</span><span class="o">::</span><span class="nl">PRIV</span><span class="p">:</span>
+								<span class="n">strcpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="s">&#34;PRIV:   &#34;</span><span class="p">);</span>
+								<span class="k">break</span><span class="p">;</span>
+							<span class="k">case</span> <span class="n">RTCPSDESPacket</span><span class="o">::</span><span class="nl">Unknown</span><span class="p">:</span>
+							<span class="k">default</span><span class="o">:</span>
+								<span class="n">strcpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="s">&#34;Unknown &#34;</span><span class="p">);</span>
+							<span class="p">}</span>
+							<span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="s">&#34;    %s&#34;</span><span class="p">,</span><span class="n">str</span><span class="p">);</span>
+							
+							<span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetItemType</span><span class="p">()</span> <span class="o">!=</span> <span class="n">RTCPSDESPacket</span><span class="o">::</span><span class="n">PRIV</span><span class="p">)</span>
+							<span class="p">{</span>
+								<span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+								<span class="n">memcpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetItemData</span><span class="p">(),</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetItemLength</span><span class="p">());</span>
+								<span class="n">str</span><span class="p">[</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetItemLength</span><span class="p">()]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+								<span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="s">&#34;%24s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">str</span><span class="p">);</span>
+							<span class="p">}</span>
+						<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GotoNextItem</span><span class="p">());</span>
+					<span class="p">}</span>
+				<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GotoNextChunk</span><span class="p">());</span>
+			<span class="p">}</span>
+			<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">pack</span><span class="o">-&gt;</span><span class="n">GetPacketType</span><span class="p">()</span> <span class="o">==</span> <span class="n">RTCPPacket</span><span class="o">::</span><span class="n">BYE</span><span class="p">)</span>
+			<span class="p">{</span>
+				<span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="s">&#34;  BYE packet:</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+				
+				<span class="n">RTCPBYEPacket</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">RTCPBYEPacket</span> <span class="o">*</span><span class="p">)</span><span class="n">pack</span><span class="p">;</span>
+				
+				<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">GetSSRCCount</span><span class="p">();</span>
+				<span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+			
+				<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+					<span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="s">&#34;    SSRC: %26u</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetSSRC</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+				<span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">HasReasonForLeaving</span><span class="p">())</span>
+				<span class="p">{</span>
+					<span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+					<span class="n">memcpy</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetReasonData</span><span class="p">(),</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetReasonLength</span><span class="p">());</span>
+					<span class="n">str</span><span class="p">[</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">GetReasonLength</span><span class="p">()]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+					<span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="s">&#34;    Reason: %24s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">str</span><span class="p">);</span>
+				<span class="p">}</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+		<span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;Usage: rtcpdump portbase destIP destport</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="kt">int</span> <span class="n">portBase</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+	<span class="kt">int</span> <span class="n">destPort</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">destIP</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+
+	<span class="n">RTPIPv4Address</span> <span class="n">dest</span><span class="p">;</span>
+	<span class="n">RTPUDPv4TransmissionParams</span> <span class="n">transParams</span><span class="p">;</span>
+	<span class="n">RTPSessionParams</span> <span class="n">sessParams</span><span class="p">;</span>
+	<span class="n">MyRTPSession</span> <span class="n">session</span><span class="p">;</span>
+
+	<span class="n">dest</span><span class="p">.</span><span class="n">SetIP</span><span class="p">(</span><span class="n">ntohl</span><span class="p">(</span><span class="n">inet_addr</span><span class="p">(</span><span class="n">destIP</span><span class="p">.</span><span class="n">c_str</span><span class="p">())));</span>
+	<span class="n">dest</span><span class="p">.</span><span class="n">SetPort</span><span class="p">((</span><span class="kt">uint16_t</span><span class="p">)</span><span class="n">destPort</span><span class="p">);</span>
+
+	<span class="n">transParams</span><span class="p">.</span><span class="n">SetPortbase</span><span class="p">((</span><span class="kt">uint16_t</span><span class="p">)</span><span class="n">portBase</span><span class="p">);</span>
+	<span class="n">transParams</span><span class="p">.</span><span class="n">SetRTPReceiveBuffer</span><span class="p">(</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="p">);</span>
+	<span class="n">transParams</span><span class="p">.</span><span class="n">SetRTCPReceiveBuffer</span><span class="p">(</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="p">);</span>
+	<span class="n">sessParams</span><span class="p">.</span><span class="n">SetOwnTimestampUnit</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">9000.0</span><span class="p">);</span>
+	<span class="n">sessParams</span><span class="p">.</span><span class="n">SetProbationType</span><span class="p">(</span><span class="n">RTPSources</span><span class="o">::</span><span class="n">NoProbation</span><span class="p">);</span>
+
+	<span class="kt">int</span> <span class="n">status</span><span class="p">;</span>
+
+	<span class="n">status</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">sessParams</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">transParams</span><span class="p">);</span>
+	<span class="n">checkError</span><span class="p">(</span><span class="n">status</span><span class="p">);</span>
+
+	<span class="n">status</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="n">AddDestination</span><span class="p">(</span><span class="n">dest</span><span class="p">);</span>
+	<span class="n">checkError</span><span class="p">(</span><span class="n">status</span><span class="p">);</span>
+
+	<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+	<span class="n">getchar</span><span class="p">();</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E6%89%8B%E6%9C%BA%E6%8A%95%E5%B1%8F/">手机投屏</a>
+        
+            <a href="/tags/%E4%BC%9A%E8%AE%AE%E6%8A%95%E5%B1%8F/">会议投屏</a>
+        
+            <a href="/tags/rtp/">RTP</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">相关文章</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/p/u2-x10_2/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">会议投屏(3)</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/u2-x10_1/">
+        
+        
+            <div class="article-image">
+                <img src="/p/u2-x10_1/u2_source.2ce3b40c84ec7912cddc01290211d5bd_hu84a69d9f462d2421ab7664162495a227_93885_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 会议投屏(2)"
+                        data-key="u2-x10_1" 
+                        data-hash="md5-LOO0DITseRLN3AEpAhHVvQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">会议投屏(2)</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/p/u2-x10/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">会议投屏(1)</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/p/screengo-5/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">设计手机投屏安卓app(5)</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2019 - 
+        
+        2022 <a href="https://beian.miit.gov.cn/">粤ICP备19152763号</a>
+    </section>
+    
+    <section class="powerby">Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">目录</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#rfc3550httpswwwrfc-editororgrfcrfc3550"><a href="https://www.rfc-editor.org/rfc/rfc3550">RFC3550</a></a></li>
+    <li><a href="#rfc6184httpswwwrfc-editororgrfcrfc6184"><a href="https://www.rfc-editor.org/rfc/rfc6184">RFC6184</a></a>
+      <ol>
+        <li><a href="#c实例rfc3550我自己常用jrtblibhttpsgithubcomj0r1jrtplib">c++实例RFC3550我自己常用<a href="https://github.com/j0r1/JRTPLIB">JRTBLIB</a></a>
+          <ol>
+            <li><a href="#使用ffmpeghttpsffmpegorg测试验证">使用<a href="https://ffmpeg.org">ffmpeg</a>测试验证</a></li>
+            <li><a href="#使用jrtplibhttpsgithubcomj0r1jrtplib自带的tests-测试用例rtcpdump验证">使用<a href="https://github.com/j0r1/JRTPLIB">JRTPLIB</a>自带的tests 测试用例rtcpdump验证</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

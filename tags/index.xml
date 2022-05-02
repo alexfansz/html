@@ -6,13 +6,31 @@
     <description>Recent content in Tags on Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 02 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://www.basicgo.net/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://www.basicgo.net/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RTP</title>
+      <link>http://www.basicgo.net/tags/rtp/</link>
+      <pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.basicgo.net/tags/rtp/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>会议投屏</title>
       <link>http://www.basicgo.net/tags/%E4%BC%9A%E8%AE%AE%E6%8A%95%E5%B1%8F/</link>
-      <pubDate>Wed, 02 Mar 2022 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate>
       
       <guid>http://www.basicgo.net/tags/%E4%BC%9A%E8%AE%AE%E6%8A%95%E5%B1%8F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>手机投屏</title>
+      <link>http://www.basicgo.net/tags/%E6%89%8B%E6%9C%BA%E6%8A%95%E5%B1%8F/</link>
+      <pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.basicgo.net/tags/%E6%89%8B%E6%9C%BA%E6%8A%95%E5%B1%8F/</guid>
       <description></description>
     </item>
     
@@ -26,29 +44,11 @@
     </item>
     
     <item>
-      <title>手机投屏</title>
-      <link>http://www.basicgo.net/tags/%E6%89%8B%E6%9C%BA%E6%8A%95%E5%B1%8F/</link>
-      <pubDate>Wed, 02 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.basicgo.net/tags/%E6%89%8B%E6%9C%BA%E6%8A%95%E5%B1%8F/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>使用问答</title>
       <link>http://www.basicgo.net/tags/%E4%BD%BF%E7%94%A8%E9%97%AE%E7%AD%94/</link>
       <pubDate>Tue, 18 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>http://www.basicgo.net/tags/%E4%BD%BF%E7%94%A8%E9%97%AE%E7%AD%94/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>RTP</title>
-      <link>http://www.basicgo.net/tags/rtp/</link>
-      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.basicgo.net/tags/rtp/</guid>
       <description></description>
     </item>
     
