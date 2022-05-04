@@ -13,7 +13,7 @@
       <pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate>
       
       <guid>http://www.basicgo.net/p/u2-x10_3/</guid>
-      <description>两个协议标准定义了RTP H264的传输规范 RFC3550 RFC6184 c++实例RFC3550我自己常用JRTBLIB 使用ffmpeg测试验证 用ffmpeg 向本机发</description>
+      <description>两个协议标准定义了RTP H264的传输规范 RFC3550 RFC6184 c++实例RFC3550我自己常用JRTPLIB 使用ffmpeg测试验证 用ffmpeg 向本机发</description>
     </item>
     
     <item>
