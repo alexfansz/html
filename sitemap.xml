@@ -2,13 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://www.basicgo.net/post/</loc>
-    <lastmod>2022-05-02T00:00:00+00:00</lastmod>
+    <loc>http://www.basicgo.net/tags/miracast/</loc>
+    <lastmod>2024-12-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.basicgo.net/tags/rtp/</loc>
-    <lastmod>2022-05-02T00:00:00+00:00</lastmod>
+    <loc>http://www.basicgo.net/post/</loc>
+    <lastmod>2024-12-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.basicgo.net/p/rk3326-miracast/</loc>
+    <lastmod>2024-12-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.basicgo.net/tags/</loc>
+    <lastmod>2024-12-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.basicgo.net/</loc>
+    <lastmod>2024-12-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.basicgo.net/tags/rtp/</loc>
     <lastmod>2022-05-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.basicgo.net/tags/%E4%BC%9A%E8%AE%AE%E6%8A%95%E5%B1%8F/</loc>
@@ -18,9 +27,6 @@
     <lastmod>2022-05-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.basicgo.net/tags/%E6%89%8B%E6%9C%BA%E6%8A%95%E5%B1%8F/</loc>
-    <lastmod>2022-05-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://www.basicgo.net/</loc>
     <lastmod>2022-05-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.basicgo.net/p/u2-x10_2/</loc>

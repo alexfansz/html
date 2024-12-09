@@ -6,7 +6,17 @@
     <description>Recent content in Posts on 技术信息分享</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 02 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://www.basicgo.net/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://www.basicgo.net/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RK3326 Miracast</title>
+      <link>http://www.basicgo.net/p/rk3326-miracast/</link>
+      <pubDate>Mon, 09 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.basicgo.net/p/rk3326-miracast/</guid>
+      <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.rock-chips.com/a/en/products/RK33_Series/2018/0514/900.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;RK3326&lt;/a&gt;发布的SDK中，支持Miracast，在实际产品测试中发现安卓手机通过Miracast 投屏后画面延迟很高。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>会议投屏(4)</title>
       <link>http://www.basicgo.net/p/u2-x10_3/</link>
