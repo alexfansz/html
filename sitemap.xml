@@ -2,19 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://www.basicgo.net/tags/airplay/</loc>
+    <lastmod>2024-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.basicgo.net/p/airplay2/</loc>
+    <lastmod>2024-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.basicgo.net/tags/airserver/</loc>
+    <lastmod>2024-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.basicgo.net/post/</loc>
+    <lastmod>2024-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.basicgo.net/tags/</loc>
+    <lastmod>2024-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.basicgo.net/</loc>
+    <lastmod>2024-12-30T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://www.basicgo.net/tags/miracast/</loc>
     <lastmod>2024-12-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.basicgo.net/post/</loc>
-    <lastmod>2024-12-09T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://www.basicgo.net/p/rk3326-miracast/</loc>
-    <lastmod>2024-12-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://www.basicgo.net/tags/</loc>
-    <lastmod>2024-12-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://www.basicgo.net/</loc>
     <lastmod>2024-12-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.basicgo.net/tags/rtp/</loc>
@@ -76,9 +85,6 @@
   </url><url>
     <loc>http://www.basicgo.net/p/screengo/</loc>
     <lastmod>2021-12-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://www.basicgo.net/tags/airplay/</loc>
-    <lastmod>2021-12-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.basicgo.net/p/screengo-win/</loc>
     <lastmod>2021-12-26T00:00:00+00:00</lastmod>

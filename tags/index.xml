@@ -6,7 +6,25 @@
     <description>Recent content in Tags on 技术信息分享</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 09 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://www.basicgo.net/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://www.basicgo.net/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Airplay</title>
+      <link>http://www.basicgo.net/tags/airplay/</link>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.basicgo.net/tags/airplay/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AirServer</title>
+      <link>http://www.basicgo.net/tags/airserver/</link>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.basicgo.net/tags/airserver/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Miracast</title>
       <link>http://www.basicgo.net/tags/miracast/</link>
@@ -85,15 +103,6 @@
       <pubDate>Fri, 31 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>http://www.basicgo.net/tags/upnp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Airplay</title>
-      <link>http://www.basicgo.net/tags/airplay/</link>
-      <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.basicgo.net/tags/airplay/</guid>
       <description></description>
     </item>
     

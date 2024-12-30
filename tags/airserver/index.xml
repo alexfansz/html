@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AirServer on 技术信息分享</title>
+    <link>http://www.basicgo.net/tags/airserver/</link>
+    <description>Recent content in AirServer on 技术信息分享</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 30 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://www.basicgo.net/tags/airserver/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Airplay</title>
+      <link>http://www.basicgo.net/p/airplay2/</link>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.basicgo.net/p/airplay2/</guid>
+      <description>&lt;p&gt;一个完整的Airplay2 server(reciever)实现，支持mirroring,casting&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
